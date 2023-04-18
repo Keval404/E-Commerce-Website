@@ -1,0 +1,320 @@
+{% extends "base.html" %} {% block content %}
+<main>
+  <br /><br />
+  <div class="container">
+    <!--Navbar-->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5"
+    >
+      
+      <!-- Navbar brand -->
+      <span class="navbar-brand">Categories:</span>
+
+      <!-- Collapse button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#basicExampleNav"
+        aria-controls="basicExampleNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a href="#" class="nav-link" 
+              >All
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+        </ul>
+        <!-- Links -->
+
+        <form class="form-inline">
+          <div class="md-form my-0">
+            <input
+              class="form-control mr-sm-2"
+              type="text"
+              placeholder="Search"
+              aria-label="Search"
+            />
+          </div>
+        </form>
+      </div>
+      <!-- Collapsible content -->
+    </nav>
+    <!--/.Navbar-->
+
+    <!--Section: Products v.3-->
+    <!-- <section class="text-center mb-4">
+
+        <div class="row wow fadeIn">
+
+          {% for item in object_list %}
+          
+        
+          <div class="col-lg-3 col-md-6 mb-4">
+
+            <div class="card">
+
+              <div class="view overlay">
+                {% comment %} <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top" {% endcomment %}
+                <img src="{{ item.image.url }}" class="card-img-top">
+                <a href="{{ item.get_absolute_url }}">
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+
+              <div class="card-body text-center">
+                <a href="" class="grey-text">
+                  <h5>{{ item.get_category_display }}</h5>
+                </a>
+                <h5>
+                  <strong>
+                    <a href="{{ item.get_absolute_url }}" class="dark-grey-text">{{ item.title }}
+                      <span class="badge badge-pill {{ item.get_label_display }}-color">NEW</span>
+                    </a>
+                  </strong>
+                </h5>
+
+                <h4 class="font-weight-bold blue-text">
+                  <strong>$
+                  {% if item.discount_price %}
+                  {{ item.discount_price }}
+                  {% else %}
+                  {{ item.price }}
+                  {% endif %}
+                  </strong>
+                </h4>
+
+              </div>
+
+            </div>
+
+          </div>
+          {% endfor %}
+        </div>
+
+      </section>
+       -->
+    <!--Section: Products v.3-->
+
+    <!--Pagination-->
+
+    {% if is_paginated %}
+    <nav class="d-flex justify-content-center wow fadeIn">
+      <ul class="pagination pg-blue">
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a href="?page={{ page_obj.previous_page_number }}"
+            class="page-link"
+            aria-label="Previous"
+          >
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        {% endif %}
+
+        <li class="page-item active">
+          <a href="?page={{ page_obj.number }}" class="page-link"
+            >{{ page_obj.number }}
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+
+        {% if page_obj.has_next %}
+        <li class="page-item">
+          <a
+            href="?page={{ page_obj.next_page_number }}"
+            class="page-link"
+            aria-label="Next"
+          >
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+    {% endif %}
+  </div>
+</main>
+
+
+<!-- api testing -->
+<!-- <div id="apitesting"></div> -->
+<!-- api testing ends -->
+
+
+<section class="products" id="products">
+  
+  <div class="prod-slider swiper mySwiper">
+    
+    <h3 id="productHead">Our<span> Products</span></h3>
+    <!-- <div id="webmashup"></div>
+    <div id="webmashup2"></div> -->
+    <div class="wrapper swiper-wrapper">
+      {% for item in object_list %}
+      <div
+        class="prods swiper-slide"
+        style="background-image: url('{{ item.image.url }}');"
+        id="p1"
+      >
+        <h3>{{ item.title }}</h3>
+        
+        <p>From Rs.{{ item.price }}/- </p>
+        <button class="learnmore">
+          <a href="{{ item.get_absolute_url }}">Buy Now</a>
+        </button>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="tabs">
+  <div class="tablets">
+    <img
+      src="https://cdn.shopify.com/s/files/1/1706/9177/products/mini6custommacbd.png?v=1662195085"
+      alt=""
+    />
+    <h3>
+      Tablets.
+      <p>Like the way they are.</p>
+      <p>ElectroFi Tablets From Rs 49,990/-</p>
+      <div id="webmashup"></div>
+      <div id="webmashup2"></div>
+    </h3>
+    
+  </div>
+</section>
+
+<section id="phones">
+  <div class="phonediv">
+    <h3>
+      Phones.
+      <p>ElectroFI Phones <br />From Rs 89,990 /-</p>
+    </h3>
+    <img
+      src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQrnbGeTRk0brcpYZLd6OE9V6rwFkx7-zsiZ2rSOyPGvWJa044f"
+      alt=""
+    />
+  </div>
+</section>
+
+<section id="watches">
+  <div class="watchdiv">
+    <h3>Smart is everywhere.</h3>
+    <p>Track your acts. From Rs. 29,990/-</p>
+    <img
+      src="https://www.apple.com/newsroom/images/product/watch/standard/Apple_watch-series7_hero_09142021_big.jpg.slideshow-xlarge.jpg"
+      alt=""
+    />
+  </div>
+</section>
+
+<section id="laptops">
+  <div class="laptopdiv">
+    <h3>MacBook Pro 13''</h3>
+    <p>Pro anywhere.</p>
+    <p id="smalltext">From Rs. 129,900 /-</p>
+    <img
+      src="https://www.apple.com/v/macbook-pro-13/m/images/meta/macbook-pro-13_overview__bcsyunk73i2a_og.jpg"
+      alt=""
+    />
+  </div>
+  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br>
+</section>
+
+<section id="categories">
+  <div class="category">
+    <!-- <div class="aa"><p class="webmashup"></p></div> -->
+    <h3 id="creatorword">Careers at&nbsp; <span> ElectroFi</span></h3>
+    <img
+      src="https://www.apple.com/am/mac-mini/images/shared/router_business__e2nj27on8zu6_medium.jpg"
+      alt=""
+      style="width: 100%"
+    />
+  </div>
+</section>
+
+
+
+
+
+<script>
+  const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '266979bf8fmshb59317630e47f25p1186b7jsn98074210b5c4',
+		'X-RapidAPI-Host': 'amazon23.p.rapidapi.com'
+	}
+};
+
+  let webmashupVar = document.getElementById('webmashup');
+  let webmashupVar2 = document.getElementById('webmashup2');
+  let price, price2; 
+
+  // fetch('https://amazon23.p.rapidapi.com/product-details?asin=B08H8VZ6PV&country=US', options)
+  // 	.then(response => response.json())
+  // 	.then(response => {
+  //     price = response.result[0].price.current_price; 
+  //     console.log(response.result[0].price.current_price);
+  //     webmashupVar.innerHTML = `Amazon Price: $${price}`;
+  //   })
+  // 	.catch(err => console.error(err));
+
+  // fetch('https://amazon23.p.rapidapi.com/product-details?asin=B08H8VZ6PV&country=US', options)
+  // 	.then(response => response.json())
+  // 	.then(response => {
+  //     price2 = response.result[0].price.before_price; 
+  //     console.log(response.result[0].price.before_price);
+  //     webmashupVar2.innerHTML = `Walmart Price: $${price2}`;
+  //   })
+  // 	.catch(err => console.error(err));
+    
+    
+</script>
+<!-- <script>
+  let productContainer = document.getElementById('apitesting')
+let getProducts = async () => {
+  let response = await fetch('http://127.0.0.1:8000/api/item/')
+  let products = await response.json();
+  console.log(products)
+  let initial = `<h3 id="productHead">Our<span> Products</span></h3>`
+  productContainer.innerHTML += initial;
+  for (let i = 0; i < products.length; i++) {
+    let product = products[i]
+    console.log(product)
+    let row = `<div class="prod-slider swiper mySwiper">
+                <div class="wrapper swiper-wrapper">
+                  ${product.id}
+                  <div
+                    class="prods swiper-slide"
+                    style="background-image: url('${product.image}');"
+                    id="p1"
+                  >
+                    <h3>${product.title}</h3>
+                    <p>From Rs.${product.price}/-</p>
+                    <button class="learnmore">
+                      <a href="{{item.get_absolute_url}}">Buy Now</a>
+                    </button>
+                  </div>
+                </div>
+              </div>`
+
+    productContainer.innerHTML += row
+  } 
+}
+getProducts()
+
+
+</script> -->
+{% endblock content %}
